@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Questions</title>
+    <style>
+        body {
+            background-image: url('https://hips.hearstapps.com/hmg-prod/images/valentines-day-zoom-backgrounds-hearts-1643038425.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        div {
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+        h1, p {
+            margin: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @keyframes gifAnimation {
+            0% { opacity: 0; }
+            33% { opacity: 1; }
+            66% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        #gifContainer {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+        }
+        .gif {
+            width: 33.33%;
+            height: 100%;
+            position: absolute;
+            animation: gifAnimation 9s linear infinite;
+        }
+        .leftGif {
+            left: 0;
+        }
+        .centerGif {
+            left: 33.33%;
+        }
+        .rightGif {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="question1">
+        <h1>Will you be my Valentine?</h1>
+        <button onclick="showQuestion2()">Yes</button>
+        <button onclick="tryAgain()">No</button>
+    </div>
+
+    <div id="question2" style="display: none; margin-top: 20px;">
+        <h1>Are you sure?</h1>
+        <button onclick="showQuestion1()">No</button>
+        <button onclick="showQuestion3()">Yes</button>
+    </div>
+
+    <div id="question3" style="display: none; margin-top: 20px;">
+        <h1>Are you really really sure??</h1>
+        <button onclick="showGif()">Yes</button>
+        <button onclick="showQuestion1()">No</button>
+    </div>
+
+    <div id="tryAgainMessage" style="display: none; margin-top: 20px;">
+        <h1>Try again! 😠</h1>
+        <button onclick="showQuestion1()">Yes</button>
+        <!-- Additional gif for the "Try again" question -->
+        <img class="gif" src="https://cdn.discordapp.com/attachments/800134233162645576/1203529459215503390/image0.gif?ex=65d16d27&is=65bef827&hm=efc98ab93f08d57ac84f4111cb7f7d911e44771bef10e9c82319a380e254a5f9&">
+    </div>
+
+    <div id="gifContainer">
+        <!-- Initially, a placeholder image is displayed -->
+        <img class="gif leftGif" src="https://cdn.discordapp.com/attachments/800134233162645576/1203529451141341245/image0.gif?ex=65d16d25&is=65bef825&hm=c72f38ec6540d7b28c78140ade07cc948cb2a3cc4acdd9d4dc75d9d2f1308fd6&">
+        <img class="gif centerGif" src="https://cdn.discordapp.com/attachments/800134233162645576/1203529012836827206/image0.gif?ex=65d16cbd&is=65bef7bd&hm=f960d62505f2acbab00459ef2fa51f82be5339ab02d3040e3ee6a510fd2529a9&">
+        <img class="gif rightGif" src="https://cdn.discordapp.com/attachments/800134233162645576/1203529451141341245/image0.gif?ex=65d16d25&is=65bef825&hm=c72f38ec6540d7b28c78140ade07cc948cb2a3cc4acdd9d4dc75d9d2f1308fd6&">
+    </div>
+
+    <script>
+        function showQuestion1() {
+            document.getElementById("question1").style.display = "block";
+            document.getElementById("question2").style.display = "none";
+            document.getElementById("question3").style.display = "none";
+            document.getElementById("tryAgainMessage").style.display = "none";
+            document.getElementById("gifContainer").style.display = "none";
+        }
+
+        function showQuestion2() {
+            document.getElementById("question1").style.display = "none";
+            document.getElementById("question2").style.display = "block";
+            document.getElementById("question3").style.display = "none";
+            document.getElementById("tryAgainMessage").style.display = "none";
+            document.getElementById("gifContainer").style.display = "none";
+        }
+
+        function showQuestion3() {
+            document.getElementById("question1").style.display = "none";
+            document.getElementById("question2").style.display = "none";
+            document.getElementById("question3").style.display = "block";
+            document.getElementById("tryAgainMessage").style.display = "none";
+            document.getElementById("gifContainer").style.display = "none";
+        }
+
+        function showGif() {
+            // Show the gif container and hide other elements
+            document.getElementById("gifContainer").style.display = "block";
+            document.getElementById("tryAgainMessage").style.display = "none";
+            document.getElementById("question1").style.display = "none";
+            document.getElementById("question2").style.display = "none";
+            document.getElementById("question3").style.display = "none";
+        }
+
+        function tryAgain() {
+            document.getElementById("tryAgainMessage").style.display = "block";
+            document.getElementById("question1").style.display = "none";
+            document.getElementById("question2").style.display = "none";
+            document.getElementById("question3").style.display = "none";
+            document.getElementById("gifContainer").style.display = "none";
+        }
+    </script>
+</body>
+</html>
